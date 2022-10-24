@@ -1,10 +1,10 @@
 namespace CustomCompiler.CodeAnalysis;
 
-class Lexer
+internal class Lexer
 {
     private readonly string _text;
     private int _position;
-    private readonly List<string> _diagnostics = new List<string>();
+    private readonly List<string> _diagnostics = new();
 
     public Lexer(string text)
     {

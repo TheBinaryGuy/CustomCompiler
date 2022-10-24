@@ -1,6 +1,6 @@
 namespace CustomCompiler.CodeAnalysis;
 
-class Evaluator
+public class Evaluator
 {
     private readonly ExpressionSyntax _root;
 
@@ -16,7 +16,7 @@ class Evaluator
 
     private int EvaluateExpression(ExpressionSyntax node)
     {
-        if (node is NumberExpressionSyntax n)
+        if (node is LiteralExpressionSyntax n)
         {
             return (int)n.NumberToken.Value!;
         }

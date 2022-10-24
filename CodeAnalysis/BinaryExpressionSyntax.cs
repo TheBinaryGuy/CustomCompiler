@@ -1,6 +1,6 @@
 namespace CustomCompiler.CodeAnalysis;
 
-sealed class BinaryExpressionSyntax : ExpressionSyntax
+public sealed class BinaryExpressionSyntax : ExpressionSyntax
 {
     public override SyntaxKind Kind => SyntaxKind.BinaryExpression;
 

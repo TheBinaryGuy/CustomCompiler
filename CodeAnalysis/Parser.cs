@@ -1,6 +1,6 @@
 namespace CustomCompiler.CodeAnalysis;
 
-class Parser
+internal sealed class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private int _position;
@@ -32,7 +32,7 @@ class Parser
         var index = _position + offset;
         if (index >= _tokens.Length)
         {
-            return _tokens[_tokens.Length - 1];
+            return _tokens[^1];
         }
 
         return _tokens[index];
@@ -58,14 +58,14 @@ class Parser
         return new SyntaxToken(kind, Current.Position, null, null);
     }
 
-    private ExpressionSyntax ParseExpression() => ParseTerm();
-
     public SyntaxTree Parse()
     {
-        var expression = ParseTerm();
+        var expression = ParseExpression();
         var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
         return new SyntaxTree(_diagnostics, expression, endOfFileToken);
     }
+
+    private ExpressionSyntax ParseExpression() => ParseTerm();
 
     private ExpressionSyntax ParseTerm()
     {
@@ -106,6 +106,6 @@ class Parser
         }
 
         var numberToken = Match(SyntaxKind.NumberToken);
-        return new NumberExpressionSyntax(numberToken);
+        return new LiteralExpressionSyntax(numberToken);
     }
 }
