@@ -14,7 +14,7 @@ internal sealed class Parser
         SyntaxToken token;
         do
         {
-            token = lexer.NextToken();
+            token = lexer.Lex();
             if (token.Kind != SyntaxKind.WhitespaceToken && token.Kind != SyntaxKind.BadToken)
             {
                 tokens.Add(token);
