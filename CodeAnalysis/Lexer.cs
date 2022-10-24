@@ -12,6 +12,7 @@ internal class Lexer
     }
 
     public IEnumerable<string> Diagnostics => _diagnostics;
+
     private char Current
     {
         get
